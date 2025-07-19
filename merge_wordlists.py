@@ -1,15 +1,8 @@
-#!/usr/bin/env python3
-"""
-Merge allowed.txt and words.txt into total_allowed.txt
-Both input files are assumed to be sorted alphabetically
-"""
+# Merge allowed.txt and words.txt into total_allowed.txt
 
 def merge_sorted_files(file1_path, file2_path, output_path):
-    """Merge two sorted text files into one sorted output file"""
-    
     with open(file1_path, 'r') as f1, open(file2_path, 'r') as f2, open(output_path, 'w') as output:
         
-        # Read first lines
         line1 = f1.readline().strip()
         line2 = f2.readline().strip()
         
@@ -38,7 +31,6 @@ def merge_sorted_files(file1_path, file2_path, output_path):
             line2 = f2.readline().strip()
 
 if __name__ == "__main__":
-    # Check if files exist
     import os
     
     if not os.path.exists('words.txt'):
@@ -61,9 +53,3 @@ if __name__ == "__main__":
     
     with open('total_allowed.txt', 'r') as f:
         total_count = len([line for line in f if line.strip()])
-    
-    print(f"Words in words.txt: {words_count:,}")
-    print(f"Words in allowed.txt: {allowed_count:,}")
-    print(f"Total words in total_allowed.txt: {total_count:,}")
-    print(f"Duplicates removed: {words_count + allowed_count - total_count}")
-    print("Merge complete!") 
